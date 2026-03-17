@@ -5,28 +5,33 @@
 @custom-variant dark (&:is(.dark *));
 
 /* Technology Page Background Images */
-.bg-tech-desktop {
-  background-image: url('/technology-assets/background-technology-desktop.jpg');
+.bg-tech {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
-
-.bg-tech-tablet {
-  background-image: url('/technology-assets/background-technology-tablet.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-.bg-tech-mobile {
   background-image: url('/technology-assets/background-technology-mobile.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+}
+
+/* Mobile - small screens */
+@media (max-width: 425px) {
+  .bg-tech {
+    background-image: url('/technology-assets/background-technology-mobile.jpg');
+  }
+}
+
+/* Tablet - medium screens */
+@media (min-width: 426px) and (max-width: 1023px) {
+  .bg-tech {
+    background-image: url('/technology-assets/background-technology-tablet.jpg');
+  }
+}
+
+/* Desktop - large screens */
+@media (min-width: 1024px) {
+  .bg-tech {
+    background-image: url('/technology-assets/background-technology-desktop.jpg');
+  }
 }
 
 :root {

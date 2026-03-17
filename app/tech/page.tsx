@@ -21,9 +21,12 @@ export default function Tech() {
 
 {/* Background Image  */}
   <div
-    className="bg-tech-mobile md:bg-tech-tablet lg:bg-tech-desktop bg-cover flex flex-col h-screen md:justify-around pt-20 md:pt-28 pb-12 lg:pl-28">
+    className="bg-tech bg-cover flex flex-col h-screen md:justify-around pt-20 md:pt-28 pb-12 lg:pl-28">
 
     <div
+
+
+// Set page contents here
        className="flex text-white tracking-wider barlow-condensed mb-6 md:mb-10 justify-center md:justify-start md:ml-5 md:text-xl lg:pt-12 lg:text-2x1"> 
        <span className="opacity-25 mr-4 bold">03</span>
        <p> SPACE LAUNCH 101 </p>
