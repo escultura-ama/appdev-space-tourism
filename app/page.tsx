@@ -23,7 +23,7 @@ export default function Page() {
           >
             SPACE
           </h2>
-          <p className="font-barlow mt-6 md:mt-8 lg:mt-8 max-w-sm md:max-w-sm lg:max-w-md text-primaryText" style={{ fontSize: '28px', lineHeight: '28px', fontWeight: 400 }}>
+          <p className="font-barlow,condensed mt-6 md:mt-8 lg:mt-8 max-w-sm md:max-w-full lg:max-w-md text-primaryText" style={{ fontSize: '18px', lineHeight: '29px', fontWeight: 400 }}>
             Let's face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we'll give you a truly out of this world experience!
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function Page() {
         {/* Right Button - Desktop Only */}
         <div className="hidden lg:flex items-center justify-center w-1/2">
           <button 
-            className="w-60 h-60 rounded-full text-xl font-normal tracking-widest bg-white text-black hover:bg-gray-200 active:bg-gray-300 transition-all duration-300 font-bellefair flex items-center justify-center shadow-lg hover:shadow-xl shrink-0"
+            className="w-57 h-57 rounded-full text-xl font-normal tracking-widest bg-white text-black hover:bg-gray-200 active:bg-gray-300 transition-all duration-300 font-bellefair flex items-center justify-center shadow-lg hover:shadow-xl hover:cursor-pointer shrink-0"
           >
             EXPLORE
           </button>
