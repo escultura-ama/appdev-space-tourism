@@ -21,40 +21,50 @@ export function Nav() {
       >
         <Image
           src={open ? "/icon-close.svg" : "/icon-hamburger.svg"}
-          width={32}
-          height={32}
+          width={24}
+          height={24}
           alt={open ? "Close menu" : "Menu"}
-          className="cursor-pointer w-8 h-8"
+          className="w-6 h-6"
         />
       </button>
 
-      <hr className="w-1/2 h-1 absolute right-[40%] hidden lg:block xl:right-1/4 opacity-25" />
+      <hr className="w-1/2 h-1 absolute right-[40%] hidden lg:block xl:right-1/4 opacity-50" />
 
-      <div className="md:flex hidden backdrop-blur-[40px] bg-black/60">
+      <div className="md:flex hidden backdrop-blur-2xl bg-black/60">
         <ul className="text-white tracking-widest flex gap-12 barlow-condensed items-center justify-center py-6 px-8 lg:pr-32 lg:pl-24">
           <li>
-            <Link href="/" className="uppercase light hover:text-primaryText hover:underline underline-offset-[26px] transition duration-150 ease-in-out">
-              <span className="hidden lg:inline bold">00</span> Home
+            <Link href="/">
+              <p className="uppercase light hover:text-primaryText hover:underline underline-offset-26 transition duration-150 ease-in-out" style={{ letterSpacing: '0.1em' }}>
+                <span className="hidden lg:inline bold">00</span> Home
+              </p>
             </Link>
           </li>
           <li>
-            <Link href="/destination" className="uppercase light hover:text-primaryText hover:underline underline-offset-[26px] transition duration-150 ease-in-out">
-              <span className="hidden lg:inline bold">01</span> Destination
+            <Link href="/destination">
+              <p className="uppercase light hover:text-primaryText hover:underline underline-offset-26 transition duration-150 ease-in-out" style={{ letterSpacing: '0.1em' }}>
+                <span className="hidden lg:inline bold">01</span> Destination
+              </p>
             </Link>
           </li>
           <li>
-            <Link href="/crew" className="uppercase light hover:text-primaryText hover:underline underline-offset-[26px] transition duration-150 ease-in-out">
-              <span className="hidden lg:inline bold">02</span> Crew
+            <Link href="/crew">
+              <p className="uppercase light hover:text-primaryText hover:underline underline-offset-26 transition duration-150 ease-in-out" style={{ letterSpacing: '0.1em' }}>
+                <span className="hidden lg:inline bold">02</span> Crew
+              </p>
             </Link>
           </li>
           <li>
-            <Link href="/tech" className="uppercase light hover:text-primaryText hover:underline underline-offset-[26px] transition duration-150 ease-in-out">
-              <span className="hidden lg:inline bold">03</span> Technology
+            <Link href="/tech">
+              <p className="uppercase light hover:text-primaryText hover:underline underline-offset-26 transition duration-150 ease-in-out" style={{ letterSpacing: '0.1em' }}>
+                <span className="hidden lg:inline bold">03</span> Technology
+              </p>
             </Link>
           </li>
           <li>
-            <Link href="/discover" className="uppercase light hover:text-primaryText hover:underline underline-offset-[26px] transition duration-150 ease-in-out">
-              <span className="hidden lg:inline bold">04</span> Discover
+            <Link href="/discover">
+              <p className="uppercase light hover:text-primaryText hover:underline underline-offset-26 transition duration-150 ease-in-out" style={{ letterSpacing: '0.1em' }}>
+                <span className="hidden lg:inline bold">04</span> Discover
+              </p>
             </Link>
           </li>
         </ul>

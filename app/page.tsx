@@ -3,21 +3,48 @@ import { Nav } from "@/components/Nav"
 
 export default function Page() {
   return (
-    <div className="flex min-h-screen flex-col p-6 bg-[url('/background-home-mobile.jpg')] sm:bg-[url('/background-home-tablet.jpg')] lg:bg-[url('/background-home-desktop.jpg')] bg-cover bg-center bg-no-repeat">
+    <div className="bg-home-bg relative min-h-screen flex flex-col">
       <Nav />
 
-      <div className="flex flex-1 items-center justify-center">
-        <div>
-          <div className="px-8 items-center lg:items-start justify-center text-center flex flex-col lg:text-left w-[824px] h-[370px]">
-            <h1 className="text-primaryText tracking-wider md:text-xl lg:text-3xl lg:text-widest">SO, YOU WANT TO TRAVEL TO</h1>
-            <h2 className="Bellefair text-6xl font-semibold text-white mt-6 mb-10 md:mb-12 md:text-9xl lg:text-[150px]" style={{ fontFamily: "Bellefair, serif", lineHeight: "150px", width: "444.61px", height: "150px" }}>SPACE</h2>
-            <br />
-            <p>Let's face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we'll give you a truly out of this world experience!</p>
-            <p>We&apos;ve already added the button component for you.</p>
-            <Button className="mt-2">Button</Button>
-          </div>
-          
+      <div className="flex-1 flex items-center justify-between px-6 md:px-10 lg:px-36 pb-0">
+        {/* Left Content */}
+        <div className="flex flex-col items-center text-center md:items-start md:text-left w-full md:w-1/2 lg:w-auto md:mt-0">
+          <h1 className="font-barlow text-primaryText font-normal hidden md:block" style={{ fontSize: '30px', lineHeight: '36px', letterSpacing: '1.5px' }}>
+            SO, YOU WANT TO TRAVEL TO
+          </h1>
+          <h1 className="font-barlow text-primaryText font-normal md:hidden mb-4" style={{ fontSize: '30px', lineHeight: '36px', letterSpacing: '1.5px' }}>
+            SO, YOU<br />
+            WANT TO<br />
+            TRAVEL TO
+          </h1>
+          <h2 
+            className="font-bellefair font-normal text-white mt-4 md:mt-4 lg:mt-0"
+            style={{ fontSize: '150px', lineHeight: '150px' }}
+          >
+            SPACE
+          </h2>
+          <p className="font-barlow mt-6 md:mt-8 lg:mt-8 max-w-sm md:max-w-sm lg:max-w-md text-primaryText" style={{ fontSize: '28px', lineHeight: '28px', fontWeight: 400 }}>
+            Let's face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we'll give you a truly out of this world experience!
+          </p>
         </div>
+
+        {/* Right Button - Desktop Only */}
+        <div className="hidden lg:flex items-center justify-center w-1/2">
+          <button 
+            className="w-60 h-60 rounded-full text-xl font-normal tracking-widest bg-white text-black hover:bg-gray-200 active:bg-gray-300 transition-all duration-300 font-bellefair flex items-center justify-center shadow-lg hover:shadow-xl shrink-0"
+          >
+            EXPLORE
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile/Tablet Button */}
+      <div className="lg:hidden w-full flex justify-center pb-12 md:pb-16">
+        <button 
+          className="w-40 h-40 md:w-48 md:h-48 rounded-full text-base md:text-lg font-normal tracking-widest bg-white text-black hover:bg-gray-200 active:bg-gray-300 transition-all duration-300 font-bellefair flex items-center justify-center shadow-lg shrink-0"
+        >
+          EXPLORE
+        </button>
       </div>
     </div>
   )
