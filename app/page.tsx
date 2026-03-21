@@ -27,12 +27,13 @@ export default function Page() {
             Let's face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we'll give you a truly out of this world experience!
           </p>
         </div>
-
+           
         {/* Right Button - Desktop Only */}
         <div className="hidden lg:flex items-center justify-center w-1/2">
+            
           <button 
-            className="w-57 h-57 rounded-full text-xl font-normal tracking-widest bg-white text-black hover:bg-gray-200 active:bg-gray-300 transition-all duration-300 font-bellefair flex items-center justify-center shadow-lg hover:shadow-xl hover:cursor-pointer shrink-0"
-          >
+            className="ml-100 mt-50 w-60 h-60 rounded-full text-3xl font-normal tracking-wide bg-white text-black hover:bg-gray-200 active:bg-gray-300 transition-all duration-300 font-bellefair flex items-center justify-center shadow-lg hover:shadow-xl hover:cursor-pointer shrink-0"
+          > 
             EXPLORE
           </button>
         </div>
@@ -41,7 +42,7 @@ export default function Page() {
       {/* Mobile/Tablet Button */}
       <div className="lg:hidden w-full flex justify-center pb-12 md:pb-16">
         <button 
-          className="w-40 h-40 md:w-48 md:h-48 rounded-full text-base md:text-lg font-normal tracking-widest bg-white text-black hover:bg-gray-200 active:bg-gray-300 transition-all duration-300 font-bellefair flex items-center justify-center shadow-lg shrink-0"
+          className="[ml-1000px] w-40 h-40 md:w-48 md:h-48 rounded-full text-base md:text-lg font-normal tracking-widest bg-white text-black hover:bg-gray-200 active:bg-gray-300 transition-all duration-300 font-bellefair flex items-center justify-center shadow-lg shrink-0"
         >
           EXPLORE
         </button>
