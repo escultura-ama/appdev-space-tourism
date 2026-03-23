@@ -9,7 +9,7 @@ const barlowCondensed = Barlow_Condensed({ subsets: ["latin"], weight: ["400", "
 
 const crewData = [
   { 
-    id: 1,
+    id: 1, 
     role: "COMMANDER", 
     name: "DOUGLAS HURLEY", 
     bio: "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.", 
@@ -61,11 +61,8 @@ export default function CrewPage() {
           align-items: flex-end; 
           padding: 0 165px; 
           height: calc(100vh - 136px); 
-          position: relative;
-          z-index: 1;
         }
 
-        /* HEADER: RESTORED 28PX SPACING */
         .page-header { 
           position: absolute; 
           top: 120px; 
@@ -74,22 +71,21 @@ export default function CrewPage() {
           font-size: 28px; 
           letter-spacing: 4.72px; 
           text-transform: uppercase; 
-          color: white;
-          margin: 0;
           display: flex;
           align-items: center;
+          gap: 24px; /* Keeps '02' and text near each other */
         }
-
         .page-header span { 
           opacity: 0.25; 
-          margin-right: 28px; /* FIXED SPACING */
-          font-weight: 700;
+          font-weight: 400; /* No bold */
         }
         
-        .text-section {
-          padding-bottom: 94px;
+        .text-section { 
+          width: 614px; 
+          padding-bottom: 94px; 
+          text-align: left; 
         }
-
+        
         .role { 
           font-family: ${bellefair.style.fontFamily}; 
           font-size: 32px; 
@@ -97,7 +93,6 @@ export default function CrewPage() {
           text-transform: uppercase; 
           margin-bottom: 15px;
         }
-
         .name { 
           font-family: ${bellefair.style.fontFamily}; 
           font-size: 56px; 
@@ -106,21 +101,21 @@ export default function CrewPage() {
           line-height: 1.1;
         }
 
+        /* ADDED LETTER SPACING HERE */
         .bio { 
           font-family: ${barlowCondensed.style.fontFamily}; 
           font-size: 18px; 
           line-height: 32px; 
           color: #D0D6F9; 
-          width: 444px;
-          letter-spacing: 1px;
+          width: 444px; 
+          letter-spacing: 1px; /* Adjust this value as needed for the look */
+          margin-bottom: 120px; 
         }
         
         .dots-container { 
           display: flex; 
           gap: 24px; 
-          margin-top: 120px; 
         }
-
         .dot { 
           width: 15px; 
           height: 15px; 
@@ -129,9 +124,8 @@ export default function CrewPage() {
           border: none; 
           cursor: pointer; 
           transition: 0.3s; 
-          opacity: 0.17;
+          opacity: 0.1744; /* Exact inactive state */
         }
-
         .dot.active { opacity: 1; }
         .dot:hover:not(.active) { opacity: 0.5; }
 
@@ -148,7 +142,6 @@ export default function CrewPage() {
             text-align: center; 
             padding: 40px 24px; 
             height: auto; 
-            margin-top: 100px;
           }
           .page-header { position: static; margin-bottom: 60px; font-size: 20px; justify-content: center; }
           .image-section { 
@@ -163,17 +156,18 @@ export default function CrewPage() {
             display: flex; 
             flex-direction: column; 
             align-items: center; 
+            padding-bottom: 0;
             margin-top: 32px;
           }
-          .dots-container { order: 1; margin: 0 0 32px 0; }
-          .bio { width: 100%; max-width: 458px; }
+          .dots-container { order: 1; margin-bottom: 32px; }
+          .bio { width: 100%; max-width: 458px; margin-bottom: 0; }
         }
       `}</style>
 
       <Navbar />
       
       <div className="content-wrapper">
-        <h5 className="page-header"><span>02</span> MEET YOUR CREW</h5>
+        <h5 className="page-header"><span>02</span>MEET YOUR CREW</h5>
 
         <div className="text-section">
           <h4 className="role">{member.role}</h4>
