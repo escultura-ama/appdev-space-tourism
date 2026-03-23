@@ -84,7 +84,7 @@ export default function Tech() {
           background: transparent;
           color: white;
           font-size: 24px;
-          font-weight: 700;
+          font-weight: 400;
           cursor: pointer;
           transition: all 0.3s ease;
           display: flex;
@@ -125,20 +125,15 @@ export default function Tech() {
         </nav>
 
         {/* Page Title Section */}
-        <div className="flex pt-24 md:pt-32 lg:pt-24 px-5 md:px-10 lg:px-28">
-          <h1
-            className="text-2xl md:text-3xl lg:text-4xl font-light tracking-widest text-white"
-            style={{ fontFamily: barlowCondensed.style.fontFamily }}
-          >
-            <span className="opacity-25 mr-4">03</span>
-            SPACE LAUNCH 101
-          </h1>
+        <div className="flex text-white tracking-widest mb-6 md:mb-10 justify-center md:justify-start md:ml-5 md:text-lg lg:text-xl" style={{ fontFamily: barlowCondensed.style.fontFamily }}>
+          <span className="opacity-25 mr-4 font-bold">03</span>
+          SPACE LAUNCH 101
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row lg:justify-between items-center px-5 md:px-10 lg:px-28 pt-12 pb-12 gap-8 lg:gap-20">
+        <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:items-center px-5 md:px-10 lg:px-28 pt-12 pb-12 gap-8 lg:gap-20">
           {/* Left: Technology Image */}
-          <div className="w-full lg:w-2/5 flex justify-center order-2 lg:order-1">
+          <div className="w-full lg:w-2/5 flex justify-center order-1 lg:order-2 items-center">
             <picture>
               <source
                 media="(max-width: 1199px)"
@@ -153,9 +148,9 @@ export default function Tech() {
           </div>
 
           {/* Center & Right: Controls and Content */}
-          <div className="w-full lg:w-2/5 order-1 lg:order-2 flex flex-col gap-8">
+          <div className="w-full lg:w-2/5 order-2 lg:order-1 flex flex-col lg:flex-row gap-8 lg:gap-12 mx-auto lg:mx-0">
             {/* Number Buttons */}
-            <div className="flex gap-4 md:gap-6 justify-center lg:justify-start">
+            <div className="flex gap-4 md:gap-6 lg:flex-col lg:gap-8 justify-center lg:justify-start">
               {technologies.map((tech, index) => (
                 <button
                   key={tech.id}
@@ -172,19 +167,19 @@ export default function Tech() {
             {/* Content Section */}
             <div className="text-center lg:text-left">
               <p
-                className="text-sm md:text-base lg:text-base font-light tracking-widest text-gray-300 uppercase mb-4"
-                style={{ fontFamily: barlowCondensed.style.fontFamily }}
+                className="text-sm md:text-base lg:text-base font-light tracking-widest uppercase mb-4"
+                style={{ fontFamily: barlowCondensed.style.fontFamily, color: "#D0D6F9" }}
               >
                 THE TERMINOLOGY…
               </p>
               <h2
-                className="text-3xl md:text-4xl lg:text-5xl font-normal text-white mb-6 uppercase"
+                className="text-2xl md:text-2xl lg:text-2xl font-normal text-white mb-6 uppercase"
                 style={{ fontFamily: bellefair.style.fontFamily }}
               >
                 {technologies[activeIndex].name}
               </h2>
               <p
-                className="text-base md:text-lg lg:text-lg text-gray-300 leading-relaxed max-w-lg"
+                className="text-base md:text-lg lg:text-lg text-gray-300 leading-relaxed max-w-120 text-center md:px-28 lg:px-0 h-30"
                 style={{ fontFamily: barlow.style.fontFamily }}
               >
                 {technologies[activeIndex].description}
