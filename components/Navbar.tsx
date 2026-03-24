@@ -1,201 +1,191 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
-import Navbar from "@/components/Navbar";
-import { Bellefair, Barlow_Condensed } from "next/font/google";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Barlow_Condensed } from "next/font/google";
 
-const bellefair = Bellefair({ subsets: ["latin"], weight: ["400"] });
 const barlowCondensed = Barlow_Condensed({ subsets: ["latin"], weight: ["400", "700"] });
 
-const crewData = [
-  { 
-    id: 1, 
-    role: "COMMANDER", 
-    name: "DOUGLAS HURLEY", 
-    bio: "Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former NASA astronaut. He launched into space for the third time as commander of Crew Dragon Demo-2.", 
-    image: "/assets/crew/image-douglas-hurley.webp" 
-  },
-  {
-    id: 2,
-    role: "MISSION SPECIALIST",
-    name: "MARK SHUTTLEWORTH",
-    bio: "Mark Richard Shuttleworth is the founder and CEO of Canonical, the company behind the Linux-based Ubuntu operating system. Shuttleworth became the first South African to travel to space as a space tourist.",
-    image: "/assets/crew/image-mark-shuttleworth.webp"
-  },
-  {
-    id: 3,
-    role: "PILOT",
-    name: "VICTOR GLOVER",
-    bio: "Pilot on the first operational flight of the SpaceX Crew Dragon to the International Space Station. Glover is a commander in the U.S. Navy where he pilots an F/A-18.",
-    image: "/assets/crew/image-victor-glover.webp"
-  },
-  {
-    id: 4,
-    role: "FLIGHT ENGINEER",
-    name: "ANOUSHEH ANSARI",
-    bio: "Anousheh Ansari is an Iranian-American engineer and co-founder of Prodea Systems. Ansari was the fourth self-funded space tourist, the first self-funded woman to fly to the ISS, and the first Iranian in space.",
-    image: "/assets/crew/image-anousheh-ansari.webp"
-  }
+const navLinks = [
+  { id: "00", name: "HOME", path: "/" },
+  { id: "01", name: "DESTINATION", path: "/destination" },
+  { id: "02", name: "CREW", path: "/crew" },
+  { id: "03", name: "TECHNOLOGY", path: "/technology" },
 ];
 
-export default function CrewPage() {
-  const [active, setActive] = useState(0);
-  const member = crewData[active];
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <main className="crew-page">
+    <nav className={`navbar-container ${barlowCondensed.className}`}>
+      {/* LOGO */}
+      <div className="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+          <g fill="none" fillRule="evenodd">
+            <circle cx="24" cy="24" r="24" fill="#FFF" />
+            <path fill="#0B0D17" d="M24 0c0 13.255-10.745 24-24 24 13.255 0 24 10.745 24 24 0-13.255 10.745-24 24-24-13.255 0-24-10.745-24-24z" />
+          </g>
+        </svg>
+      </div>
+
+      <div className="nav-line"></div>
+
+      {/* DESKTOP NAV */}
+      <ul className="desktop-menu">
+        {navLinks.map((link) => (
+          <li key={link.id} className={pathname === link.path ? "active" : ""}>
+            <Link href={link.path}>
+              <span>{link.id}</span> {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      {/* HAMBURGER ICON (Mobile Only) */}
+      <button className="hamburger" onClick={() => setIsOpen(true)}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21">
+          <g fill="#D0D6F9" fillRule="evenodd">
+            <path d="M0 0h24v3H0zM0 9h24v3H0zM0 18h24v3H0z" />
+          </g>
+        </svg>
+      </button>
+
+      {/* MOBILE SIDEBAR */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div 
+              className="nav-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+            />
+            
+            <motion.div 
+              className="mobile-drawer"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
+              <button className="close-btn" onClick={() => setIsOpen(false)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21">
+                  <g fill="#D0D6F9" fillRule="evenodd">
+                    <path d="M2.575.954l16.97 16.97-2.12 2.122L.455 3.076z" />
+                    <path d="M.454 17.925L17.424.955l2.122 2.12-16.97 16.97z" />
+                  </g>
+                </svg>
+              </button>
+
+              <ul className="mobile-links">
+                {navLinks.map((link) => (
+                  <li key={link.id} className={pathname === link.path ? "active" : ""}>
+                    <Link href={link.path} onClick={() => setIsOpen(false)}>
+                      <span>{link.id}</span> {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       <style jsx>{`
-        .crew-page { 
-          background-image: url('/assets/crew/background-crew-desktop.jpg'); 
-          background-size: cover; 
-          background-position: center;
-          min-height: 100vh; 
-          color: white; 
-          overflow: hidden; 
-          position: relative;
-        }
-
-        .content-wrapper { 
-          display: flex; 
-          justify-content: space-between; 
-          align-items: flex-end; 
-          padding: 0 165px; 
-          height: calc(100vh - 136px); 
-        }
-
-        .page-header { 
-          position: absolute; 
-          top: 120px; 
-          left: 165px; 
-          font-family: ${barlowCondensed.style.fontFamily};
-          font-size: 28px; 
-          letter-spacing: 4.72px; 
-          text-transform: uppercase; 
+        .navbar-container {
           display: flex;
           align-items: center;
-          gap: 24px; /* Keeps '02' and text near each other */
-        }
-        .page-header span { 
-          opacity: 0.25; 
-          font-weight: 400; /* No bold */
-        }
-        
-        .text-section { 
-          width: 614px; 
-          padding-bottom: 94px; 
-          text-align: left; 
-        }
-        
-        .role { 
-          font-family: ${bellefair.style.fontFamily}; 
-          font-size: 32px; 
-          opacity: 0.5; 
-          text-transform: uppercase; 
-          margin-bottom: 15px;
-        }
-        .name { 
-          font-family: ${bellefair.style.fontFamily}; 
-          font-size: 56px; 
-          text-transform: uppercase; 
-          margin-bottom: 27px; 
-          line-height: 1.1;
+          justify-content: space-between;
+          padding-top: 40px;
+          padding-left: 55px;
+          position: relative;
+          z-index: 100;
         }
 
-        /* ADDED LETTER SPACING HERE */
-        .bio { 
-          font-family: ${barlowCondensed.style.fontFamily}; 
-          font-size: 18px; 
-          line-height: 32px; 
-          color: #D0D6F9; 
-          width: 444px; 
-          letter-spacing: 1px; /* Adjust this value as needed for the look */
-          margin-bottom: 120px; 
+        .nav-line {
+          height: 1px;
+          background: white;
+          opacity: 0.25;
+          flex-grow: 1;
+          margin-left: 64px;
+          margin-right: -35px;
+          z-index: 110;
         }
-        
-        .dots-container { 
-          display: flex; 
-          gap: 24px; 
-        }
-        .dot { 
-          width: 15px; 
-          height: 15px; 
-          border-radius: 50%; 
-          background: white; 
-          border: none; 
-          cursor: pointer; 
-          transition: 0.3s; 
-          opacity: 0.1744; /* Exact inactive state */
-        }
-        .dot.active { opacity: 1; }
-        .dot:hover:not(.active) { opacity: 0.5; }
 
-        .image-section { 
-          width: 568px; 
-          height: 712px; 
-          position: relative; 
+        .desktop-menu {
+          background: rgba(255, 255, 255, 0.04);
+          backdrop-filter: blur(40px);
+          display: flex;
+          gap: 48px;
+          padding: 0 120px 0 165px;
+          list-style: none;
         }
+
+        .desktop-menu li {
+          height: 96px;
+          display: flex;
+          align-items: center;
+          border-bottom: 3px solid transparent;
+          transition: 0.3s;
+        }
+
+        .desktop-menu li:hover { border-bottom: 3px solid rgba(255, 255, 255, 0.5); }
+        .desktop-menu li.active { border-bottom: 3px solid white; }
+
+        .desktop-menu a {
+          text-decoration: none;
+          color: white;
+          letter-spacing: 2.7px;
+          font-size: 16px;
+        }
+
+        .desktop-menu span { font-weight: 700; margin-right: 11px; }
+
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0 24px; }
+
+        /* MOBILE DRAWER STYLES */
+        .mobile-drawer {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          width: 70%;
+          background: rgba(255, 255, 255, 0.04);
+          backdrop-filter: blur(40px);
+          padding: 34px;
+          z-index: 200;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .nav-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 190;
+        }
+
+        .close-btn { align-self: flex-end; background: none; border: none; cursor: pointer; margin-bottom: 64px; }
+
+        .mobile-links { list-style: none; display: flex; flex-direction: column; gap: 32px; }
+        .mobile-links a { text-decoration: none; color: white; letter-spacing: 2.7px; font-size: 16px; }
+        .mobile-links span { font-weight: 700; margin-right: 11px; }
+        .mobile-links li.active { border-right: 4px solid white; }
 
         @media (max-width: 1100px) {
-          .content-wrapper { 
-            flex-direction: column; 
-            align-items: center; 
-            text-align: center; 
-            padding: 40px 24px; 
-            height: auto; 
-          }
-          .page-header { position: static; margin-bottom: 60px; font-size: 20px; justify-content: center; }
-          .image-section { 
-            order: 1; 
-            width: 327px; 
-            height: 223px; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
-          }
-          .text-section { 
-            order: 2; 
-            width: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            padding-bottom: 0;
-            margin-top: 32px;
-          }
-          .dots-container { order: 1; margin-bottom: 32px; }
-          .bio { width: 100%; max-width: 458px; margin-bottom: 0; }
+          .nav-line { display: none; }
+          .desktop-menu { padding: 0 48px; gap: 37px; }
+        }
+
+        @media (max-width: 768px) {
+          .navbar-container { padding: 24px; }
+          .desktop-menu { display: none; }
+          .hamburger { display: block; }
         }
       `}</style>
-
-      <Navbar />
-      
-      <div className="content-wrapper">
-        <h5 className="page-header"><span>02</span>MEET YOUR CREW</h5>
-
-        <div className="text-section">
-          <h4 className="role">{member.role}</h4>
-          <h3 className="name">{member.name}</h3>
-          <p className="bio">{member.bio}</p>
-          
-          <div className="dots-container">
-            {crewData.map((_, i) => (
-              <button 
-                key={i} 
-                className={`dot ${i === active ? 'active' : ''}`} 
-                onClick={() => setActive(i)} 
-                aria-label={`Select crew member ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="image-section">
-          <Image 
-            src={member.image} 
-            alt={member.name} 
-            fill 
-            style={{ objectFit: "contain", objectPosition: "bottom" }} 
-            priority 
-          />
-        </div>
-      </div>
-    </main>
+    </nav>
   );
 }
