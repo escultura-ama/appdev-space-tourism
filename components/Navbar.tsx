@@ -43,22 +43,23 @@ export default function Navbar() {
         ))}
       </ul>
 
-      {/* HAMBURGER ICON (Mobile Only) */}
-      <button className="hamburger" onClick={() => setIsOpen(true)}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21">
-          <g fill="#D0D6F9" fillRule="evenodd">
-            <path d="M0 0h24v3H0zM0 9h24v3H0zM0 18h24v3H0z" />
-          </g>
-        </svg>
-      </button>
+      {/* HAMBURGER ICON */}
+      {!isOpen && (
+        <button className="hamburger" onClick={() => setIsOpen(true)}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="21">
+            <g fill="#D0D6F9" fillRule="evenodd">
+              <path d="M0 0h24v3H0zM0 9h24v3H0zM0 18h24v3H0z" />
+            </g>
+          </svg>
+        </button>
+      )}
 
       {/* MOBILE SIDEBAR */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
             <motion.div 
-              className="nav-backdrop"
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -66,13 +67,13 @@ export default function Navbar() {
             />
             
             <motion.div 
-              className="mobile-drawer"
+              className="fixed right-0 top-0 z-50 bg-black/70 backdrop-blur-2xl text-white w-[60%] h-screen p-8"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
             >
-              <button className="close-btn" onClick={() => setIsOpen(false)}>
+              <button className="absolute top-8 right-8" onClick={() => setIsOpen(false)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21">
                   <g fill="#D0D6F9" fillRule="evenodd">
                     <path d="M2.575.954l16.97 16.97-2.12 2.122L.455 3.076z" />
@@ -81,15 +82,27 @@ export default function Navbar() {
                 </svg>
               </button>
 
-              <ul className="mobile-links">
-                {navLinks.map((link) => (
-                  <li key={link.id} className={pathname === link.path ? "active" : ""}>
-                    <Link href={link.path} onClick={() => setIsOpen(false)}>
-                      <span>{link.id}</span> {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+<ul className="flex flex-col gap-10 mt-24 uppercase tracking-[2.7px] items-start pl-8">
+  {navLinks.map((link) => {
+    const isActive = pathname === link.path;
+    return (
+      <li key={link.id}>
+        <Link 
+          href={link.path} 
+          onClick={() => setIsOpen(false)} 
+          className={`inline-flex gap-4 pb-2 border-b-2 transition-all duration-300 ${
+            isActive 
+              ? "border-white" 
+              : "border-transparent hover:border-white/50"
+          }`}
+        >
+          <span className="font-bold">{link.id}</span> {link.name}
+        </Link>
+      </li>
+    );
+  })}
+</ul>
+
             </motion.div>
           </>
         )}
@@ -138,42 +151,24 @@ export default function Navbar() {
 
         .desktop-menu a {
           text-decoration: none;
-          color: white;
+          color: white; /* Fixed from black to white */
           letter-spacing: 2.7px;
           font-size: 16px;
         }
 
         .desktop-menu span { font-weight: 700; margin-right: 11px; }
 
-        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0 24px; }
-
-        /* MOBILE DRAWER STYLES */
-        .mobile-drawer {
+        .hamburger { 
+          display: none; 
+          background: none; 
+          border: none; 
+          cursor: pointer; 
+          padding: 0 24px;
           position: fixed;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          width: 70%;
-          background: rgba(255, 255, 255, 0.04);
-          backdrop-filter: blur(40px);
-          padding: 34px;
-          z-index: 200;
-          display: flex;
-          flex-direction: column;
+          top: 32px;
+          right: 24px;
+          z-index: 50;
         }
-
-        .nav-backdrop {
-          position: fixed;
-          inset: 0;
-          z-index: 190;
-        }
-
-        .close-btn { align-self: flex-end; background: none; border: none; cursor: pointer; margin-bottom: 64px; }
-
-        .mobile-links { list-style: none; display: flex; flex-direction: column; gap: 32px; }
-        .mobile-links a { text-decoration: none; color: white; letter-spacing: 2.7px; font-size: 16px; }
-        .mobile-links span { font-weight: 700; margin-right: 11px; }
-        .mobile-links li.active { border-right: 4px solid white; }
 
         @media (max-width: 1100px) {
           .nav-line { display: none; }
