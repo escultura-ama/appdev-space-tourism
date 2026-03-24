@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Barlow_Condensed, Bellefair } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -14,6 +14,18 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 })
 
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-barlow-condensed",
+})
+
+const bellefair = Bellefair({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bellefair",
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,7 +35,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", fontSans.variable)}
+      className={cn("antialiased", fontMono.variable, fontSans.variable, barlowCondensed.variable, bellefair.variable, "font-sans")}
     >
       <body>
         <ThemeProvider>{children}</ThemeProvider>
