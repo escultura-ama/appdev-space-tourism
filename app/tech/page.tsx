@@ -77,19 +77,20 @@ export default function Tech() {
         }
 
         .tech-number-button {
-          width: 60px;
-          height: 60px;
+          width: 64px;
+          height: 64px;
           border: 2px solid rgba(255, 255, 255, 0.25);
           border-radius: 50%;
           background: transparent;
-          color: white;
-          font-size: 24px;
+          color: #9CA3AF;
+          font-size: 20px;
           font-weight: 400;
           cursor: pointer;
           transition: all 0.3s ease;
           display: flex;
           align-items: center;
           justify-content: center;
+          font-family: Bellefair, serif;
         }
 
         .tech-number-button:hover {
@@ -101,19 +102,19 @@ export default function Tech() {
           color: #0b0e17;
         }
 
-        @media (max-width: 1199px) {
+        @media (max-width: 1023px) {
           .tech-number-button {
-            width: 50px;
-            height: 50px;
-            font-size: 18px;
+            width: 64px;
+            height: 64px;
+            font-size: 20px;
           }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
           .tech-number-button {
             width: 40px;
             height: 40px;
-            font-size: 16px;
+            font-size: 20px;
           }
         }
 
@@ -121,13 +122,13 @@ export default function Tech() {
           font-size: 24px;
         }
 
-        @media (min-width: 769px) {
+        @media (min-width: 768px) {
           .tech-name {
             font-size: 36px;
           }
         }
 
-        @media (min-width: 1200px) {
+        @media (min-width: 1024px) {
           .tech-name {
             font-size: 56px;
           }
@@ -147,7 +148,7 @@ export default function Tech() {
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:items-center px-5 md:px-10 lg:px-28 pt-12 pb-12 gap-8 lg:gap-20">
+        <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:items-center lg:px-28 pt-12 pb-12 gap-8 lg:gap-20">
           {/* Left: Technology Image */}
           <div className="w-full lg:w-2/5 flex justify-center order-1 lg:order-2 items-center">
             <picture>
@@ -158,7 +159,7 @@ export default function Tech() {
               <img
                 src={technologies[activeIndex].imagePortrait}
                 alt={technologies[activeIndex].name}
-                className="max-w-xs md:max-w-md lg:max-w-lg h-auto"
+                className="w-full h-full md:h-full lg:max-w-lg lg:h-auto"
               />
             </picture>
           </div>
@@ -195,7 +196,7 @@ export default function Tech() {
                 {technologies[activeIndex].name}
               </h2>
               <p
-                className="text-base md:text-lg lg:text-lg leading-relaxed max-w-120 text-center md:px-28 lg:px-0 h-30"
+                className="text-base md:text-lg lg:text-lg leading-relaxed max-w-480 flex:column text-center sm:px-32 px-10 md:px-28 lg:px-0 lg:text-left h-30 "
                 style={{ fontFamily: barlow.style.fontFamily, color: "#D0D6F9" }}
               >
                 {technologies[activeIndex].description}
