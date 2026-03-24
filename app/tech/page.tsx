@@ -116,6 +116,22 @@ export default function Tech() {
             font-size: 16px;
           }
         }
+
+        .tech-name {
+          font-size: 24px;
+        }
+
+        @media (min-width: 769px) {
+          .tech-name {
+            font-size: 36px;
+          }
+        }
+
+        @media (min-width: 1200px) {
+          .tech-name {
+            font-size: 56px;
+          }
+        }
       `}</style>
 
       <div className="tech-page">
@@ -125,7 +141,7 @@ export default function Tech() {
         </nav>
 
         {/* Page Title Section */}
-        <div className="flex text-white tracking-widest mb-6 md:mb-10 justify-center md:justify-start md:ml-5 md:text-lg lg:text-xl" style={{ fontFamily: barlowCondensed.style.fontFamily }}>
+        <div className="flex text-white tracking-widest mb-6 md:mb-10 justify-center md:justify-start md:ml-5 md:text-lg lg:text-xl" style={{ fontFamily: barlowCondensed.style.fontFamily, paddingTop: "40px" }}>
           <span className="opacity-25 mr-4 font-bold">03</span>
           SPACE LAUNCH 101
         </div>
@@ -136,7 +152,7 @@ export default function Tech() {
           <div className="w-full lg:w-2/5 flex justify-center order-1 lg:order-2 items-center">
             <picture>
               <source
-                media="(max-width: 1199px)"
+                media="(max-width: 1023px)"
                 srcSet={technologies[activeIndex].imageLandscape}
               />
               <img
@@ -173,14 +189,14 @@ export default function Tech() {
                 THE TERMINOLOGY…
               </p>
               <h2
-                className="text-2xl md:text-2xl lg:text-2xl font-normal text-white mb-6 uppercase"
-                style={{ fontFamily: bellefair.style.fontFamily }}
+                className="tech-name font-normal text-white mb-6 uppercase"
+                style={{ fontFamily: "Bellefair, serif" }}
               >
                 {technologies[activeIndex].name}
               </h2>
               <p
-                className="text-base md:text-lg lg:text-lg text-gray-300 leading-relaxed max-w-120 text-center md:px-28 lg:px-0 h-30"
-                style={{ fontFamily: barlow.style.fontFamily }}
+                className="text-base md:text-lg lg:text-lg leading-relaxed max-w-120 text-center md:px-28 lg:px-0 h-30"
+                style={{ fontFamily: barlow.style.fontFamily, color: "#D0D6F9" }}
               >
                 {technologies[activeIndex].description}
               </p>
