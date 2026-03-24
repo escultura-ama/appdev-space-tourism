@@ -23,6 +23,18 @@ const fontSans = Barlow({
   variable: "--font-sans",
 });
 
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-barlow-condensed",
+})
+
+const bellefair = Bellefair({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-bellefair",
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
